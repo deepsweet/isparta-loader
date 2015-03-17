@@ -29,7 +29,7 @@ config.set({
     ],
     ...
     preprocessors: {
-        // 'src/**/*.js': ['coverage'], << and this too
+        // 'src/**/*.es6': ['coverage'], << and this too
         'test/**/*.es6': [ 'webpack' ]
     },
     reporters: [ 'progress', 'coverage' ],
