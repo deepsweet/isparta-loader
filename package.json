@@ -1,6 +1,6 @@
 {
   "name": "isparta-loader",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "isparta instrumenter loader for webpack",
   "keywords": [ "webpack", "loader", "isparta", "istanbul", "coverage" ],
   "homepage": "https://github.com/deepsweet/isparta-loader",
