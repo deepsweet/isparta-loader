@@ -24,34 +24,36 @@ Useful to get work together [karma-webpack](https://github.com/webpack/karma-web
 config.set({
     ...
     files: [
-      // 'src/**/*.es6', << you don't need this anymore
-      'test/**/*.es6'
+      // 'lib/**/*.js', << you don't need this anymore
+      'test/**/*.js'
     ],
     ...
     preprocessors: {
-        // 'src/**/*.es6': ['coverage'], << and this too
-        'test/**/*.es6': [ 'webpack' ]
+        // 'lib/**/*.js': ['coverage'], << and this too
+        'test/**/*.js': [ 'webpack' ]
     },
     reporters: [ 'progress', 'coverage' ],
     coverageReporter: {
-        type: 'html',
-        dir: 'coverage/'
+        type: 'text'
     },
     ...
     webpack: {
         ...
         module: {
             preLoaders: [
-                /*
-                  add subject as webpack's preloader **instead**
-                  of usual babel-loader (isparta will transpile
-                  your code with babel and then "instrument" it).
-                */
+                // transpile test files with babel as usual
                 {
-                    test: /\.es6$/,
-                    exclude: /\/(test|node_modules)\//
+                    test: /\.js$/,
+                    include: path.resolve('test/'),
+                    loader: 'babel'
+                    // loader: 'babel?stage=1'
+                },
+                // transpile and instrument testing files with isparta
+                {
+                    test: /\.js$/,
+                    include: path.resolve('lib/'),
                     loader: 'isparta'
-                    // loader: 'isparta?{ babel: { experimental: true } }'
+                    // loader: 'isparta?{ noAutoWrap: false, babel: { stage: 1 } }'
                 }
             ],
             loaders: [ ... ],
