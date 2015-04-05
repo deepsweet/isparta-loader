@@ -15,7 +15,7 @@
   },
   "main": "index.js",
   "dependencies": {
-    "isparta": "2.2.x",
+    "isparta": "3.x.x",
     "loader-utils": "0.x.x",
     "lodash.assign": "3.x.x"
   },
