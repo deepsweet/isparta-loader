@@ -4,7 +4,7 @@
 [![deps](http://img.shields.io/david/deepsweet/isparta-loader.svg?style=flat-square)](https://david-dm.org/deepsweet/isparta-loader)
 [![gratipay](http://img.shields.io/gratipay/deepsweet.svg?style=flat-square)](https://gratipay.com/deepsweet/)
 
-Instrument JS files with [isparta](https://github.com/douglasduteil/isparta) for subsequent code coverage reporting.
+Instrument ES6 code with [isparta](https://github.com/douglasduteil/isparta) for subsequent code coverage reporting.
 
 ### Install
 
@@ -24,13 +24,13 @@ Useful to get work together [karma-webpack](https://github.com/webpack/karma-web
 config.set({
     ...
     files: [
-      // 'lib/**/*.js', << you don't need this anymore
-      'test/**/*.js'
+      // 'lib/**/*.es6', << you don't need this anymore
+      'test/**/*.es6'
     ],
     ...
     preprocessors: {
-        // 'lib/**/*.js': ['coverage'], << and this too
-        'test/**/*.js': [ 'webpack' ]
+        // 'lib/**/*.es6': ['coverage'], << and this too
+        'test/**/*.es6': [ 'webpack' ]
     },
     reporters: [ 'progress', 'coverage' ],
     coverageReporter: {
@@ -43,14 +43,14 @@ config.set({
             preLoaders: [
                 // transpile test files with babel as usual
                 {
-                    test: /\.js$/,
+                    test: /\.es6$/,
                     include: path.resolve('test/'),
                     loader: 'babel'
                     // loader: 'babel?stage=1'
                 },
                 // transpile and instrument testing files with isparta
                 {
-                    test: /\.js$/,
+                    test: /\.es6$/,
                     include: path.resolve('lib/'),
                     loader: 'isparta'
                     // loader: 'isparta?{ noAutoWrap: false, babel: { stage: 1 } }'
