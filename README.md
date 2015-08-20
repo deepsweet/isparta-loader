@@ -14,11 +14,15 @@ $ npm i -S isparta-loader
 
 ### Setup
 
+#### References
+
 * [Using loaders](https://webpack.github.io/docs/using-loaders.html)
 * [karma-webpack](https://github.com/webpack/karma-webpack#karma-webpack)
 * [karma-coverage](https://github.com/karma-runner/karma-coverage#configuration)
 
-Let's say you have the following project structure:
+#### Project structure
+
+Let's say you have the following:
 
 ```
 ├── src/
@@ -36,9 +40,9 @@ Let's say you have the following project structure:
 
 To create a code coverage report for all components (even for those for which you have no tests yet) you have to require all the 1) sources and 2) tests. Something like it's described in ["alternative usage" of karma-webpack](https://github.com/webpack/karma-webpack#alternative-usage):
 
-```js
-// test/index.js
+#### test/index.js
 
+```js
 // require all `test/components/**/index.js`
 const testsContext = require.context('./src/components/', true, /index\.js$/);
 
@@ -50,10 +54,13 @@ const componentsContext = require.context('../src/components/', true, /index\.js
 componentsContext.keys().forEach(componentsContext);
 ```
 
+This file will be the only entry point for Karma:
+
+#### karma.conf.js
+
 ```js
 config.set({
     …
-    // test/index.js is the only entry point
     files: [
       'test/index.js'
     ],
