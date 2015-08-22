@@ -4,12 +4,12 @@
 [![deps](http://img.shields.io/david/deepsweet/isparta-loader.svg?style=flat-square)](https://david-dm.org/deepsweet/isparta-loader)
 [![gratipay](http://img.shields.io/gratipay/deepsweet.svg?style=flat-square)](https://gratipay.com/deepsweet/)
 
-Instrument ES6 code with [isparta](https://github.com/douglasduteil/isparta) for subsequent code coverage reporting.
+Instrument Babel code with [isparta](https://github.com/douglasduteil/isparta) for subsequent code coverage reporting.
 
 ### Install
 
 ```sh
-$ npm i -S isparta-loader
+$ npm i -D isparta-loader
 ```
 
 ### Setup
@@ -62,7 +62,7 @@ This file will be the only entry point for Karma:
 config.set({
     …
     files: [
-      'test/index.js'
+        'test/index.js'
     ],
     preprocessors: {
         'test/index.js': 'webpack'
