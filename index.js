@@ -5,7 +5,8 @@ var isparta = require('isparta');
 module.exports = function(source) {
     var instrumenter = new isparta.Instrumenter({
         embedSource: true,
-        noAutoWrap: true
+        noAutoWrap: true,
+        babel: this.options.babel
     });
 
     if (this.cacheable) {
