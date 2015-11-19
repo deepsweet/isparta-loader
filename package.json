@@ -9,7 +9,7 @@
   "main": "index.js",
   "files": [ "index.js" ],
   "dependencies": {
-    "isparta": "3.x.x"
+    "isparta": "4.x.x"
   },
   "engines": {
     "node": ">=0.10.0"
