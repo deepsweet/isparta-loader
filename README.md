@@ -67,6 +67,19 @@ config.set({
         'test/index.js': 'webpack'
     },
     webpack: {
+        // *optional* babel options: isparta will use it as well as babel-loader
+        babel: {
+            presets: ['es2015', 'stage-0', 'react']
+        },
+        // *optional* isparta options: istanbul behind isparta will use it
+        isparta: {
+            embedSource: true,
+            noAutoWrap: true,
+            // these babel options will be passed only to isparta and not to babel-loader
+            babel: {
+                presets: ['es2015', 'stage-0', 'react']
+            }
+        },
         …
         module: {
             preLoaders: [
