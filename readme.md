@@ -5,7 +5,7 @@
 
 Instrument Babel code with [isparta](https://github.com/douglasduteil/isparta) for subsequent code coverage reporting.
 
-**Try [babel-istanbul-loader](https://github.com/deepsweet/babel-istanbul-loader) with FS caching.**
+Preferred [babel-istanbul](https://github.com/ambitioninc/babel-istanbul)? Try [babel-istanbul-loader](https://github.com/deepsweet/babel-istanbul-loader).
 
 ### Install
 
@@ -69,19 +69,10 @@ config.set({
         'test/index.js': 'webpack'
     },
     webpack: {
-        // *optional* babel options: isparta will use it as well as babel-loader
-        babel: {
-            presets: ['es2015', 'stage-0', 'react']
-        },
-        // *optional* isparta options: istanbul behind isparta will use it
-        isparta: {
-            embedSource: true,
-            noAutoWrap: true,
-            // these babel options will be passed only to isparta and not to babel-loader
-            babel: {
-                presets: ['es2015', 'stage-0', 'react']
-            }
-        },
+        // babel options: will be used by isparta-loader and babel-loader
+        babel: {},
+        // istanbul options: will be used by istanbul behind isparta
+        istanbul: {},
         …
         module: {
             preLoaders: [
@@ -98,7 +89,13 @@ config.set({
                 {
                     test: /\.js$/,
                     include: path.resolve('src/components/'),
-                    loader: 'isparta'
+                    loader: 'isparta',
+                    query: {
+                        babel: {},
+                        istanbul: {},
+                        cacheDirectory: true
+                        // see below for details
+                    }
                 }
             ]
         }
@@ -112,5 +109,18 @@ config.set({
 });
 ```
 
-### License
-[WTFPL](http://www.wtfpl.net/wp-content/uploads/2012/12/wtfpl-strip.jpg)
+### Options
+
+* `istanbul` – [Istanbul instrumenter options](https://gotwarlost.github.io/istanbul/public/apidocs/classes/InstrumentOptions.html)
+
+defaults:
+
+```js
+{
+    embedSource: true,
+    noAutoWrap: true
+}
+```
+
+* `babel` – [Babel options](https://babeljs.io/docs/usage/options/)
+* `cacheDirectory` + `cacheIdentifier` – exactly the same [cache options](https://github.com/babel/babel-loader#options) as in babel-loader
