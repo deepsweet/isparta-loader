@@ -5,7 +5,7 @@
 
 Instrument Babel code with [isparta](https://github.com/douglasduteil/isparta) for subsequent code coverage reporting.
 
-**Try [babel-istanbul-loader](https://github.com/deepsweet/babel-istanbul-loader) with FS caching.**
+**This package is DEPRECATED in favor of [babel-plugin-istanbul](https://github.com/istanbuljs/babel-plugin-istanbul).**
 
 ### Install
 
