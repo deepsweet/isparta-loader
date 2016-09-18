@@ -5,8 +5,6 @@
 
 Instrument Babel code with [isparta](https://github.com/douglasduteil/isparta) for subsequent code coverage reporting.
 
-**This package is DEPRECATED in favor of [istanbul-instrumenter-loader](https://github.com/deepsweet/istanbul-instrumenter-loader).**
-
 ### Install
 
 ```sh
